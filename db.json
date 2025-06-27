@@ -1,0 +1,20 @@
+{
+  "contacts": [
+    {
+      "name": "Mcadams",
+      "email": "mcadams.njogu@students.moringasch",
+      "phone": "0743245432",
+      "address": "TZ",
+      "group": "Family",
+      "id": 1
+    },
+    {
+      "name": "KINARA",
+      "email": "kinarakabro@gmail.com",
+      "phone": "0193234932",
+      "address": "Ongata Rongai",
+      "group": "Work",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <h1>Contact Manager</h1>
+    <p class="navbar-desc">
+      Organizing and maintaining relationships with key individuals is made easier with the help of the contact manager app. It provides bulk import/export for simple setup and allows you to store comprehensive contact information, including names, emails, phone numbers, and notes. Using intelligent search and filters, contacts can be rapidly retrieved and arranged into groups that can be customized, such as work, family, clients, or others. Emails and physical addresses are also tracked by the app. Your data remains accessible across devices with secure cloud sync, and email integrations help you work more efficiently. This tool keeps your contacts organized, searchable, and current, whether you're using it for personal or professional networking.
+    </p>
+    <button id="toggle-theme">Toggle Light/Dark Mode</button>
+  </div>
+
+  <main>
+    <section id="landing">
+      <h2>Welcome to Contact Manager</h2>
+      <p>Organize your personal and professional contacts easily.</p>
+    </section>
+
+    <section id="contact-form">
+      <h2>Add a Contact</h2>
+      <form id="addContactForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="phone" placeholder="Phone Number" required />
+        <input type="text" id="address" placeholder="Physical Address" required />
+        <select id="group">
+          <option value="Family">Family</option>
+          <option value="Work">Work</option>
+          <option value="Clients">Clients</option>
+          <option value="Other">Other</option>
+        </select>
+        <button type="submit">Add Contact</button>
+      </form>
+    </section>
+
+    <section id="contacts">
+      <h2>Contact List</h2>
+      <input type="text" id="search" placeholder="Search contacts by name..." />
+      <ul id="contactList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Contact Manager App</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

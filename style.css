@@ -1,0 +1,212 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe082 0%, #ffb74d 100%);
+  margin: 0;
+  padding: 0;
+  /* transition: background 0.3s, color 0.3s; */
+}
+
+.navbar {
+  background: linear-gradient(90deg, #ff9800 0%, #ffb74d 100%);
+  color: #4e2600;
+  padding: 2rem 1rem 1.5rem 1rem;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 24px rgba(255, 152, 0, 0.10);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.navbar h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.navbar-desc {
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #5d3500;
+  background: rgba(255,255,255,0.5);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
+}
+
+#toggle-theme {
+  margin-top: 1rem;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.18);
+  transition: background 0.2s, transform 0.1s;
+}
+
+#toggle-theme:hover {
+  background: #ff5722;
+  transform: scale(1.04);
+}
+
+main {
+  padding: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  background: #fffde7;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(255, 152, 0, 0.08);
+  padding: 2rem;
+  margin: 1rem auto;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+#landing, #contact-form, #contacts {
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 24px rgba(255, 152, 0, 0.10);
+  padding: 2rem 1rem;
+}
+
+#landing {
+  background: linear-gradient(90deg, #ffe082 0%, #ffb74d 100%);
+  color: #4e2600;
+  text-align: center;
+}
+
+#contact-form {
+  background: linear-gradient(90deg, #fffde7 0%, #ffe0b2 100%);
+}
+
+#contacts {
+  background: linear-gradient(90deg, #ffe0b2 0%, #ffcc80 100%);
+}
+
+#contacts h2 {
+  color: #ff5722;
+}
+
+form input, form select, form button {
+  border-radius: 6px;
+  border: 1.5px solid #ff9800;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+
+form button {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.18);
+}
+
+form button:hover {
+  background: #ff5722;
+  transform: scale(1.04);
+}
+
+#search {
+  border: 2px solid #ff9800;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+#search:focus {
+  border-color: #ff5722;
+  outline: none;
+}
+
+/* Contact List Styling */
+#contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  border: 2px solid #ffb74d;
+  background: linear-gradient(100deg, #fffde7 70%, #ffe0b2 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(255, 152, 0, 0.10);
+  padding: 1.5rem 1.2rem 1rem 1.2rem;
+  transition: box-shadow 0.2s, transform 0.15s;
+  position: relative;
+  font-size: 1.08rem;
+}
+
+.contact-item:hover {
+  box-shadow: 0 8px 32px rgba(255, 152, 0, 0.18);
+  transform: translateY(-3px) scale(1.02);
+  border-color: #ff9800;
+}
+
+.contact-item strong {
+  font-size: 1.2rem;
+  color: #ff9800;
+  letter-spacing: 1px;
+}
+
+.contact-item .contact-group {
+  background: #ff9800;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.1rem 0.7rem;
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.contact-item .contact-field {
+  display: flex;
+  align-items: center;
+  margin: 0.3rem 0;
+  color: #5d3500;
+}
+
+.contact-item .contact-field span {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-item button {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 1.1rem;
+  margin: 0.5rem 0.3rem 0 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.10);
+}
+
+.contact-item button:hover {
+  background: #ff5722;
+  transform: scale(1.05);
+}
