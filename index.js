@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/contacts";
+const API = "https://jsonplaceholder.typicode.com/users";
 const form = document.getElementById("addContactForm");
 const contactList = document.getElementById("contactList");
 const searchInput = document.getElementById("search");
@@ -9,17 +9,52 @@ form.addEventListener("submit", handleAddContact);
 searchInput.addEventListener("input", handleSearch);
 toggleThemeBtn.addEventListener("click", toggleTheme);
 
-// Load contacts from json-server
+function getLocalContacts() {
+  return JSON.parse(localStorage.getItem('localContacts') || '[]');
+}
+
+function saveLocalContact(contact) {
+  const locals = getLocalContacts();
+  locals.push(contact);
+  localStorage.setItem('localContacts', JSON.stringify(locals));
+}
+
+function updateLocalContact(id, updatedContact) {
+  const locals = getLocalContacts();
+  const index = locals.findIndex(c => c.id === id);
+  if (index !== -1) {
+    locals[index] = { ...locals[index], ...updatedContact };
+    localStorage.setItem('localContacts', JSON.stringify(locals));
+  }
+}
+
+function deleteLocalContact(id) {
+  const locals = getLocalContacts().filter(c => c.id !== id);
+  localStorage.setItem('localContacts', JSON.stringify(locals));
+}
+
 function loadContacts() {
   fetch(API)
     .then(res => res.json())
-    .then(data => displayContacts(data));
+    .then(users => {
+      const apiContacts = users.map(user => ({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: `${user.address.street}, ${user.address.city}`,
+        group: "Other"
+      }));
+      const localContacts = getLocalContacts();
+      displayContacts([...apiContacts, ...localContacts]);
+    });
 }
 
 // Add new contact
 function handleAddContact(e) {
   e.preventDefault();
   const contact = {
+    id: Date.now(),
     name: form.name.value,
     email: form.email.value,
     phone: form.phone.value,
@@ -27,14 +62,8 @@ function handleAddContact(e) {
     group: form.group.value
   };
 
-  fetch(API, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(contact)
-  })
-    .then(res => res.json())
-    .then(loadContacts);
-
+  saveLocalContact(contact);
+  loadContacts();
   form.reset();
 }
 
@@ -70,24 +99,46 @@ function displayContacts(contacts) {
 
 // Delete contact
 function deleteContact(id) {
-  fetch(`${API}/${id}`, {
-    method: "DELETE"
-  }).then(loadContacts);
+  const locals = getLocalContacts();
+  if (locals.find(c => c.id === id)) {
+    deleteLocalContact(id);
+  }
+  loadContacts();
 }
 
 // Edit contact
 function editContact(id) {
-  // Find the <li> for this contact
-  const li = Array.from(contactList.children).find(li =>
-    li.querySelector("button") && li.innerHTML.includes(`Edit`) && li.innerHTML.includes(`Delete`)
-  );
+  const locals = getLocalContacts();
+  const localContact = locals.find(c => c.id === id);
+  
+  if (localContact) {
+    showEditForm(id, localContact);
+  } else {
+    fetch(`${API}/${id}`)
+      .then(res => res.json())
+      .then(user => {
+        const contact = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          address: `${user.address.street}, ${user.address.city}`,
+          group: "Other"
+        };
+        showEditForm(id, contact);
+      });
+  }
+}
 
-  // Get the contact data from the API
-  fetch(`${API}/${id}`)
-    .then(res => res.json())
-    .then(contact => {
-      // Clear the li content
-      li.innerHTML = "";
+function showEditForm(id, contact) {
+  const li = Array.from(contactList.children).find(li =>
+    li.innerHTML.includes(contact.name) &&
+    li.innerHTML.includes(contact.email) &&
+    li.innerHTML.includes(contact.phone)
+  );
+  if (!li) return; // Prevent errors if li is not found
+  // Clear the li content
+  li.innerHTML = "";
 
       // Create a container for the edit form
       const formDiv = document.createElement("div");
@@ -165,11 +216,12 @@ function editContact(id) {
           address: addressInput.value,
           group: groupSelect.value
         };
-        fetch(`${API}/${id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updated)
-        }).then(loadContacts);
+        
+        const locals = getLocalContacts();
+        if (locals.find(c => c.id === id)) {
+          updateLocalContact(id, updated);
+        }
+        loadContacts();
       });
 
       const cancelBtn = document.createElement("button");
@@ -203,7 +255,6 @@ function editContact(id) {
       formDiv.appendChild(btnDiv);
 
       li.appendChild(formDiv);
-    });
 }
 
 // Search contacts (event: input)
@@ -211,8 +262,16 @@ function handleSearch(e) {
   const query = e.target.value.toLowerCase();
   fetch(API)
     .then(res => res.json())
-    .then(data => {
-      const filtered = data.filter(contact =>
+    .then(users => {
+      const contacts = users.map(user => ({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: `${user.address.street}, ${user.address.city}`,
+        group: "Other"
+      }));
+      const filtered = contacts.filter(contact =>
         contact.name.toLowerCase().includes(query)
       );
       displayContacts(filtered);
