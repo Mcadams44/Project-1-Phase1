@@ -43,7 +43,16 @@
 
     <section id="contacts">
       <h2>Contact List</h2>
-      <input type="text" id="search" placeholder="Search contacts by name..." />
+      <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+        <input type="text" id="search" placeholder="Search contacts by name..." style="flex: 1;" />
+        <select id="groupFilter">
+          <option value="All">All Groups</option>
+          <option value="Family">Family</option>
+          <option value="Work">Work</option>
+          <option value="Clients">Clients</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
       <ul id="contactList"></ul>
     </section>
   </main>

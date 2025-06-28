@@ -2,11 +2,13 @@ const API = "https://jsonplaceholder.typicode.com/users";
 const form = document.getElementById("addContactForm");
 const contactList = document.getElementById("contactList");
 const searchInput = document.getElementById("search");
+const groupFilter = document.getElementById("groupFilter");
 const toggleThemeBtn = document.getElementById("toggle-theme");
 
 document.addEventListener("DOMContentLoaded", loadContacts);
 form.addEventListener("submit", handleAddContact);
 searchInput.addEventListener("input", handleSearch);
+groupFilter.addEventListener("change", handleFilter);
 toggleThemeBtn.addEventListener("click", toggleTheme);
 document.getElementById("feedbackForm").addEventListener("submit", handleFeedback);
 
@@ -170,6 +172,41 @@ function showDeleteConfirmation(id) {
   dialog.appendChild(buttonDiv);
   popup.appendChild(dialog);
   document.body.appendChild(popup);
+}
+
+// Filter contacts by group
+function handleFilter() {
+  const selectedGroup = groupFilter.value;
+  const searchQuery = searchInput.value.toLowerCase();
+  
+  fetch(API)
+    .then(res => res.json())
+    .then(users => {
+      const apiContacts = users.map(user => ({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: `${user.address.street}, ${user.address.city}`,
+        group: "Other"
+      }));
+      const localContacts = getLocalContacts();
+      let allContacts = [...apiContacts, ...localContacts];
+      
+      // Filter by group
+      if (selectedGroup !== "All") {
+        allContacts = allContacts.filter(contact => contact.group === selectedGroup);
+      }
+      
+      // Filter by search query
+      if (searchQuery) {
+        allContacts = allContacts.filter(contact =>
+          contact.name.toLowerCase().includes(searchQuery)
+        );
+      }
+      
+      displayContacts(allContacts);
+    });
 }
 
 // Handle feedback form submission
@@ -441,25 +478,7 @@ function showEditForm(id, contact) {
 
 // Search contacts (event: input)
 function handleSearch(e) {
-  const query = e.target.value.toLowerCase();
-  fetch(API)
-    .then(res => res.json())
-    .then(users => {
-      const apiContacts = users.map(user => ({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        address: `${user.address.street}, ${user.address.city}`,
-        group: "Other"
-      }));
-      const localContacts = getLocalContacts();
-      const allContacts = [...apiContacts, ...localContacts];
-      const filtered = allContacts.filter(contact =>
-        contact.name.toLowerCase().includes(query)
-      );
-      displayContacts(filtered);
-    });
+  handleFilter();
 }
 
 // Toggle dark mode (event: click)
