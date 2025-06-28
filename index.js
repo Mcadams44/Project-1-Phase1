@@ -161,7 +161,20 @@ function showEditForm(id, contact) {
         formDiv.style.border = "2px solid #93c6dd";
       }
 
+      // Add edit title
+      const editTitle = document.createElement("h3");
+      editTitle.textContent = `Editing: ${contact.name}`;
+      editTitle.style.margin = "0 0 1rem 0";
+      editTitle.style.color = isDarkMode ? "#93c6dd" : "#10309b";
+      formDiv.appendChild(editTitle);
+
       // Create input fields pre-filled with current values
+      const nameLabel = document.createElement("label");
+      nameLabel.textContent = "Name:";
+      nameLabel.style.fontWeight = "bold";
+      nameLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
+      formDiv.appendChild(nameLabel);
+      
       const nameInput = document.createElement("input");
       nameInput.value = contact.name;
       nameInput.placeholder = "Full Name";
@@ -176,6 +189,12 @@ function showEditForm(id, contact) {
         nameInput.style.color = "#1565c0";
       }
 
+      const emailLabel = document.createElement("label");
+      emailLabel.textContent = "Email:";
+      emailLabel.style.fontWeight = "bold";
+      emailLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
+      formDiv.appendChild(emailLabel);
+      
       const emailInput = document.createElement("input");
       emailInput.type = "email";
       emailInput.value = contact.email;
@@ -191,6 +210,12 @@ function showEditForm(id, contact) {
         emailInput.style.color = "#1565c0";
       }
 
+      const phoneLabel = document.createElement("label");
+      phoneLabel.textContent = "Phone:";
+      phoneLabel.style.fontWeight = "bold";
+      phoneLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
+      formDiv.appendChild(phoneLabel);
+      
       const phoneInput = document.createElement("input");
       phoneInput.value = contact.phone;
       phoneInput.placeholder = "Phone Number";
@@ -205,6 +230,12 @@ function showEditForm(id, contact) {
         phoneInput.style.color = "#1565c0";
       }
 
+      const addressLabel = document.createElement("label");
+      addressLabel.textContent = "Address:";
+      addressLabel.style.fontWeight = "bold";
+      addressLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
+      formDiv.appendChild(addressLabel);
+      
       const addressInput = document.createElement("input");
       addressInput.value = contact.address;
       addressInput.placeholder = "Physical Address";
@@ -219,6 +250,12 @@ function showEditForm(id, contact) {
         addressInput.style.color = "#1565c0";
       }
 
+      const groupLabel = document.createElement("label");
+      groupLabel.textContent = "Group:";
+      groupLabel.style.fontWeight = "bold";
+      groupLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
+      formDiv.appendChild(groupLabel);
+      
       const groupSelect = document.createElement("select");
       groupSelect.style.padding = "0.5rem";
       groupSelect.style.borderRadius = "6px";

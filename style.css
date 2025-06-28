@@ -128,6 +128,16 @@ form {
   color: #ccc !important;
 }
 
+.dark-mode #search {
+  background: #555 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+.dark-mode #search:focus {
+  border-color: #93c6dd !important;
+}
+
 #landing, #contact-form, #contacts {
   border-radius: 16px;
   margin-bottom: 2rem;
