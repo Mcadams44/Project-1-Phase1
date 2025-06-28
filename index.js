@@ -47,6 +47,11 @@ function loadContacts() {
       }));
       const localContacts = getLocalContacts();
       displayContacts([...apiContacts, ...localContacts]);
+    })
+    .catch(() => {
+      // If API fails, just show local contacts
+      const localContacts = getLocalContacts();
+      displayContacts(localContacts);
     });
 }
 
@@ -131,13 +136,11 @@ function editContact(id) {
 }
 
 function showEditForm(id, contact) {
-  const li = Array.from(contactList.children).find(li =>
-    li.innerHTML.includes(contact.name) &&
-    li.innerHTML.includes(contact.email) &&
-    li.innerHTML.includes(contact.phone)
-  );
-  if (!li) return; // Prevent errors if li is not found
-  // Clear the li content
+  const li = Array.from(contactList.children).find(li => {
+    const buttons = li.querySelectorAll('button');
+    return buttons.length === 2 && li.innerHTML.includes(contact.name);
+  });
+  if (!li) return;
   li.innerHTML = "";
 
       // Create a container for the edit form
@@ -263,7 +266,7 @@ function handleSearch(e) {
   fetch(API)
     .then(res => res.json())
     .then(users => {
-      const contacts = users.map(user => ({
+      const apiContacts = users.map(user => ({
         id: user.id,
         name: user.name,
         email: user.email,
@@ -271,7 +274,9 @@ function handleSearch(e) {
         address: `${user.address.street}, ${user.address.city}`,
         group: "Other"
       }));
-      const filtered = contacts.filter(contact =>
+      const localContacts = getLocalContacts();
+      const allContacts = [...apiContacts, ...localContacts];
+      const filtered = allContacts.filter(contact =>
         contact.name.toLowerCase().includes(query)
       );
       displayContacts(filtered);
