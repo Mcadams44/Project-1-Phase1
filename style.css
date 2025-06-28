@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffe082 0%, #ffb74d 100%);
+  background: linear-gradient(135deg, #10309b 0%, #93c6dd 100%);
   margin: 0;
   padding: 0;
   /* transition: background 0.3s, color 0.3s; */
@@ -37,7 +37,7 @@ body {
 
 #toggle-theme {
   margin-top: 1rem;
-  background: #ff9800;
+  background: #000000;
   color: #fff;
   border: none;
   border-radius: 8px;
