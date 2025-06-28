@@ -14,6 +14,7 @@ body {
   box-shadow: 0 4px 24px rgba(255, 152, 0, 0.10);
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .navbar h1 {
@@ -58,7 +59,9 @@ body {
 }
 
 #toggle-theme {
-  margin-top: 1rem;
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
   background: #000000;
   color: #fff;
   border: none;
@@ -231,7 +234,6 @@ form {
 
 #contacts {
   background: linear-gradient(90deg, #3896b3 0%, #155458 100%);
-  text-align: center;
 }
 
 #contacts h2 {
