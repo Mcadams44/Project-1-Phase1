@@ -148,10 +148,18 @@ function showEditForm(id, contact) {
       formDiv.style.flexDirection = "column";
       formDiv.style.gap = "0.7rem";
       formDiv.style.padding = "1.5rem 1.2rem 1rem 1.2rem";
-      formDiv.style.background = "linear-gradient(100deg, #e3f2fd 70%, #bbdefb 100%)";
       formDiv.style.borderRadius = "16px";
-      formDiv.style.border = "2px solid #93c6dd";
       formDiv.style.boxShadow = "0 4px 16px rgba(16, 48, 155, 0.10)";
+      
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      if (isDarkMode) {
+        formDiv.style.background = "linear-gradient(100deg, #333 70%, #444 100%)";
+        formDiv.style.border = "2px solid #666";
+        formDiv.style.color = "#fff";
+      } else {
+        formDiv.style.background = "linear-gradient(100deg, #e3f2fd 70%, #bbdefb 100%)";
+        formDiv.style.border = "2px solid #93c6dd";
+      }
 
       // Create input fields pre-filled with current values
       const nameInput = document.createElement("input");
@@ -159,8 +167,14 @@ function showEditForm(id, contact) {
       nameInput.placeholder = "Full Name";
       nameInput.style.padding = "0.5rem";
       nameInput.style.borderRadius = "6px";
-      nameInput.style.border = "2px solid #93c6dd";
-      nameInput.style.color = "#1565c0";
+      if (isDarkMode) {
+        nameInput.style.border = "2px solid #666";
+        nameInput.style.background = "#555";
+        nameInput.style.color = "#fff";
+      } else {
+        nameInput.style.border = "2px solid #93c6dd";
+        nameInput.style.color = "#1565c0";
+      }
 
       const emailInput = document.createElement("input");
       emailInput.type = "email";
@@ -168,30 +182,54 @@ function showEditForm(id, contact) {
       emailInput.placeholder = "Email Address";
       emailInput.style.padding = "0.5rem";
       emailInput.style.borderRadius = "6px";
-      emailInput.style.border = "2px solid #93c6dd";
-      emailInput.style.color = "#1565c0";
+      if (isDarkMode) {
+        emailInput.style.border = "2px solid #666";
+        emailInput.style.background = "#555";
+        emailInput.style.color = "#fff";
+      } else {
+        emailInput.style.border = "2px solid #93c6dd";
+        emailInput.style.color = "#1565c0";
+      }
 
       const phoneInput = document.createElement("input");
       phoneInput.value = contact.phone;
       phoneInput.placeholder = "Phone Number";
       phoneInput.style.padding = "0.5rem";
       phoneInput.style.borderRadius = "6px";
-      phoneInput.style.border = "2px solid #93c6dd";
-      phoneInput.style.color = "#1565c0";
+      if (isDarkMode) {
+        phoneInput.style.border = "2px solid #666";
+        phoneInput.style.background = "#555";
+        phoneInput.style.color = "#fff";
+      } else {
+        phoneInput.style.border = "2px solid #93c6dd";
+        phoneInput.style.color = "#1565c0";
+      }
 
       const addressInput = document.createElement("input");
       addressInput.value = contact.address;
       addressInput.placeholder = "Physical Address";
       addressInput.style.padding = "0.5rem";
       addressInput.style.borderRadius = "6px";
-      addressInput.style.border = "2px solid #93c6dd";
-      addressInput.style.color = "#1565c0";
+      if (isDarkMode) {
+        addressInput.style.border = "2px solid #666";
+        addressInput.style.background = "#555";
+        addressInput.style.color = "#fff";
+      } else {
+        addressInput.style.border = "2px solid #93c6dd";
+        addressInput.style.color = "#1565c0";
+      }
 
       const groupSelect = document.createElement("select");
       groupSelect.style.padding = "0.5rem";
       groupSelect.style.borderRadius = "6px";
-      groupSelect.style.border = "2px solid #93c6dd";
-      groupSelect.style.color = "#1565c0";
+      if (isDarkMode) {
+        groupSelect.style.border = "2px solid #666";
+        groupSelect.style.background = "#555";
+        groupSelect.style.color = "#fff";
+      } else {
+        groupSelect.style.border = "2px solid #93c6dd";
+        groupSelect.style.color = "#1565c0";
+      }
       ["Family", "Work", "Clients", "Other"].forEach(opt => {
         const option = document.createElement("option");
         option.value = opt;
