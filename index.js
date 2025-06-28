@@ -103,11 +103,14 @@ function displayContacts(contacts) {
 
 // Delete contact
 function deleteContact(id) {
-  const locals = getLocalContacts();
-  if (locals.find(c => c.id === id)) {
-    deleteLocalContact(id);
+  const confirmed = confirm("Are you sure you want to delete this contact?");
+  if (confirmed) {
+    const locals = getLocalContacts();
+    if (locals.find(c => c.id === id)) {
+      deleteLocalContact(id);
+    }
+    loadContacts();
   }
-  loadContacts();
 }
 
 // Edit contact
