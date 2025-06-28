@@ -147,7 +147,11 @@ function showEditForm(id, contact) {
       formDiv.style.display = "flex";
       formDiv.style.flexDirection = "column";
       formDiv.style.gap = "0.7rem";
-      formDiv.style.padding = "0.5rem 0";
+      formDiv.style.padding = "1.5rem 1.2rem 1rem 1.2rem";
+      formDiv.style.background = "linear-gradient(100deg, #e3f2fd 70%, #bbdefb 100%)";
+      formDiv.style.borderRadius = "16px";
+      formDiv.style.border = "2px solid #93c6dd";
+      formDiv.style.boxShadow = "0 4px 16px rgba(16, 48, 155, 0.10)";
 
       // Create input fields pre-filled with current values
       const nameInput = document.createElement("input");
@@ -155,7 +159,8 @@ function showEditForm(id, contact) {
       nameInput.placeholder = "Full Name";
       nameInput.style.padding = "0.5rem";
       nameInput.style.borderRadius = "6px";
-      nameInput.style.border = "1.5px solid #ff9800";
+      nameInput.style.border = "2px solid #93c6dd";
+      nameInput.style.color = "#1565c0";
 
       const emailInput = document.createElement("input");
       emailInput.type = "email";
@@ -163,26 +168,30 @@ function showEditForm(id, contact) {
       emailInput.placeholder = "Email Address";
       emailInput.style.padding = "0.5rem";
       emailInput.style.borderRadius = "6px";
-      emailInput.style.border = "1.5px solid #ff9800";
+      emailInput.style.border = "2px solid #93c6dd";
+      emailInput.style.color = "#1565c0";
 
       const phoneInput = document.createElement("input");
       phoneInput.value = contact.phone;
       phoneInput.placeholder = "Phone Number";
       phoneInput.style.padding = "0.5rem";
       phoneInput.style.borderRadius = "6px";
-      phoneInput.style.border = "1.5px solid #ff9800";
+      phoneInput.style.border = "2px solid #93c6dd";
+      phoneInput.style.color = "#1565c0";
 
       const addressInput = document.createElement("input");
       addressInput.value = contact.address;
       addressInput.placeholder = "Physical Address";
       addressInput.style.padding = "0.5rem";
       addressInput.style.borderRadius = "6px";
-      addressInput.style.border = "1.5px solid #ff9800";
+      addressInput.style.border = "2px solid #93c6dd";
+      addressInput.style.color = "#1565c0";
 
       const groupSelect = document.createElement("select");
       groupSelect.style.padding = "0.5rem";
       groupSelect.style.borderRadius = "6px";
-      groupSelect.style.border = "1.5px solid #ff9800";
+      groupSelect.style.border = "2px solid #93c6dd";
+      groupSelect.style.color = "#1565c0";
       ["Family", "Work", "Clients", "Other"].forEach(opt => {
         const option = document.createElement("option");
         option.value = opt;
@@ -199,16 +208,14 @@ function showEditForm(id, contact) {
 
       const saveBtn = document.createElement("button");
       saveBtn.textContent = "Save";
-      saveBtn.style.background = "#ff9800";
+      saveBtn.style.background = "linear-gradient(45deg, #10309b, #93c6dd)";
       saveBtn.style.color = "#fff";
       saveBtn.style.border = "none";
       saveBtn.style.borderRadius = "6px";
       saveBtn.style.padding = "0.5rem 1.2rem";
       saveBtn.style.fontWeight = "bold";
       saveBtn.style.cursor = "pointer";
-      saveBtn.style.transition = "background 0.2s";
-      saveBtn.addEventListener("mouseover", () => saveBtn.style.background = "#ff5722");
-      saveBtn.addEventListener("mouseout", () => saveBtn.style.background = "#ff9800");
+      saveBtn.style.boxShadow = "0 2px 8px rgba(16, 48, 155, 0.10)";
 
       saveBtn.addEventListener("click", () => {
         const updated = {
@@ -229,21 +236,12 @@ function showEditForm(id, contact) {
       const cancelBtn = document.createElement("button");
       cancelBtn.textContent = "Cancel";
       cancelBtn.style.background = "#fff";
-      cancelBtn.style.color = "#ff9800";
-      cancelBtn.style.border = "2px solid #ff9800";
+      cancelBtn.style.color = "#10309b";
+      cancelBtn.style.border = "2px solid #10309b";
       cancelBtn.style.borderRadius = "6px";
       cancelBtn.style.padding = "0.5rem 1.2rem";
       cancelBtn.style.fontWeight = "bold";
       cancelBtn.style.cursor = "pointer";
-      cancelBtn.style.transition = "background 0.2s, color 0.2s";
-      cancelBtn.addEventListener("mouseover", () => {
-        cancelBtn.style.background = "#ff9800";
-        cancelBtn.style.color = "#fff";
-      });
-      cancelBtn.addEventListener("mouseout", () => {
-        cancelBtn.style.background = "#fff";
-        cancelBtn.style.color = "#ff9800";
-      });
       cancelBtn.addEventListener("click", loadContacts);
 
       // Append fields and buttons
