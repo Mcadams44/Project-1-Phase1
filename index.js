@@ -169,11 +169,16 @@ function showEditForm(id, contact) {
       formDiv.appendChild(editTitle);
 
       // Create input fields pre-filled with current values
+      const nameDiv = document.createElement("div");
+      nameDiv.style.display = "flex";
+      nameDiv.style.alignItems = "center";
+      nameDiv.style.gap = "1rem";
+      
       const nameLabel = document.createElement("label");
       nameLabel.textContent = "Name:";
       nameLabel.style.fontWeight = "bold";
       nameLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
-      formDiv.appendChild(nameLabel);
+      nameLabel.style.minWidth = "80px";
       
       const nameInput = document.createElement("input");
       nameInput.value = contact.name;
@@ -189,11 +194,16 @@ function showEditForm(id, contact) {
         nameInput.style.color = "#1565c0";
       }
 
+      const emailDiv = document.createElement("div");
+      emailDiv.style.display = "flex";
+      emailDiv.style.alignItems = "center";
+      emailDiv.style.gap = "1rem";
+      
       const emailLabel = document.createElement("label");
       emailLabel.textContent = "Email:";
       emailLabel.style.fontWeight = "bold";
       emailLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
-      formDiv.appendChild(emailLabel);
+      emailLabel.style.minWidth = "80px";
       
       const emailInput = document.createElement("input");
       emailInput.type = "email";
@@ -210,11 +220,16 @@ function showEditForm(id, contact) {
         emailInput.style.color = "#1565c0";
       }
 
+      const phoneDiv = document.createElement("div");
+      phoneDiv.style.display = "flex";
+      phoneDiv.style.alignItems = "center";
+      phoneDiv.style.gap = "1rem";
+      
       const phoneLabel = document.createElement("label");
       phoneLabel.textContent = "Phone:";
       phoneLabel.style.fontWeight = "bold";
       phoneLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
-      formDiv.appendChild(phoneLabel);
+      phoneLabel.style.minWidth = "80px";
       
       const phoneInput = document.createElement("input");
       phoneInput.value = contact.phone;
@@ -230,11 +245,16 @@ function showEditForm(id, contact) {
         phoneInput.style.color = "#1565c0";
       }
 
+      const addressDiv = document.createElement("div");
+      addressDiv.style.display = "flex";
+      addressDiv.style.alignItems = "center";
+      addressDiv.style.gap = "1rem";
+      
       const addressLabel = document.createElement("label");
       addressLabel.textContent = "Address:";
       addressLabel.style.fontWeight = "bold";
       addressLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
-      formDiv.appendChild(addressLabel);
+      addressLabel.style.minWidth = "80px";
       
       const addressInput = document.createElement("input");
       addressInput.value = contact.address;
@@ -250,11 +270,16 @@ function showEditForm(id, contact) {
         addressInput.style.color = "#1565c0";
       }
 
+      const groupDiv = document.createElement("div");
+      groupDiv.style.display = "flex";
+      groupDiv.style.alignItems = "center";
+      groupDiv.style.gap = "1rem";
+      
       const groupLabel = document.createElement("label");
       groupLabel.textContent = "Group:";
       groupLabel.style.fontWeight = "bold";
       groupLabel.style.color = isDarkMode ? "#ccc" : "#10309b";
-      formDiv.appendChild(groupLabel);
+      groupLabel.style.minWidth = "80px";
       
       const groupSelect = document.createElement("select");
       groupSelect.style.padding = "0.5rem";
@@ -319,12 +344,24 @@ function showEditForm(id, contact) {
       cancelBtn.style.cursor = "pointer";
       cancelBtn.addEventListener("click", loadContacts);
 
-      // Append fields and buttons
-      formDiv.appendChild(nameInput);
-      formDiv.appendChild(emailInput);
-      formDiv.appendChild(phoneInput);
-      formDiv.appendChild(addressInput);
-      formDiv.appendChild(groupSelect);
+      // Append labels and inputs to their wrapper divs
+      nameDiv.appendChild(nameLabel);
+      nameDiv.appendChild(nameInput);
+      emailDiv.appendChild(emailLabel);
+      emailDiv.appendChild(emailInput);
+      phoneDiv.appendChild(phoneLabel);
+      phoneDiv.appendChild(phoneInput);
+      addressDiv.appendChild(addressLabel);
+      addressDiv.appendChild(addressInput);
+      groupDiv.appendChild(groupLabel);
+      groupDiv.appendChild(groupSelect);
+      
+      // Append wrapper divs to form
+      formDiv.appendChild(nameDiv);
+      formDiv.appendChild(emailDiv);
+      formDiv.appendChild(phoneDiv);
+      formDiv.appendChild(addressDiv);
+      formDiv.appendChild(groupDiv);
       btnDiv.appendChild(saveBtn);
       btnDiv.appendChild(cancelBtn);
       formDiv.appendChild(btnDiv);
