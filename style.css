@@ -88,8 +88,44 @@ form {
 }
 
 .dark-mode {
-  background-color: #121212;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
   color: #fff;
+}
+
+.dark-mode .navbar {
+  background: linear-gradient(90deg, #333 0%, #555 100%) !important;
+  color: #fff;
+}
+
+.dark-mode .navbar-desc {
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff;
+}
+
+.dark-mode #landing {
+  background: linear-gradient(90deg, #444 0%, #666 100%) !important;
+}
+
+.dark-mode #contact-form {
+  background: linear-gradient(135deg, #333 0%, #555 100%) !important;
+}
+
+.dark-mode #contacts {
+  background: linear-gradient(90deg, #444 0%, #666 100%) !important;
+}
+
+.dark-mode .contact-item {
+  background: linear-gradient(100deg, #333 70%, #444 100%) !important;
+  border-color: #666 !important;
+  color: #fff;
+}
+
+.dark-mode .contact-item strong {
+  color: #93c6dd !important;
+}
+
+.dark-mode .contact-item .contact-field {
+  color: #ccc !important;
 }
 
 #landing, #contact-form, #contacts {

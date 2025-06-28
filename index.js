@@ -285,7 +285,4 @@ function handleSearch(e) {
 // Toggle dark mode (event: click)
 function toggleTheme() {
   document.body.classList.toggle("dark-mode");
-  document.querySelectorAll(".contact-item").forEach(item => {
-    item.classList.toggle("dark");
-  });
 }
