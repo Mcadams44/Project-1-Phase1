@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", loadContacts);
 form.addEventListener("submit", handleAddContact);
 searchInput.addEventListener("input", handleSearch);
 toggleThemeBtn.addEventListener("click", toggleTheme);
+document.getElementById("feedbackForm").addEventListener("submit", handleFeedback);
 
 function getLocalContacts() {
   return JSON.parse(localStorage.getItem('localContacts') || '[]');
@@ -103,14 +104,80 @@ function displayContacts(contacts) {
 
 // Delete contact
 function deleteContact(id) {
-  const confirmed = confirm("Are you sure you want to delete this contact?");
-  if (confirmed) {
+  showDeleteConfirmation(id);
+}
+
+function showDeleteConfirmation(id) {
+  const popup = document.createElement('div');
+  popup.style.position = 'fixed';
+  popup.style.top = '0';
+  popup.style.left = '0';
+  popup.style.width = '100%';
+  popup.style.height = '100%';
+  popup.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  popup.style.display = 'flex';
+  popup.style.justifyContent = 'center';
+  popup.style.alignItems = 'center';
+  popup.style.zIndex = '1000';
+  
+  const dialog = document.createElement('div');
+  dialog.style.background = '#fff';
+  dialog.style.padding = '2rem';
+  dialog.style.borderRadius = '12px';
+  dialog.style.textAlign = 'center';
+  dialog.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+  
+  const message = document.createElement('p');
+  message.textContent = 'Are you sure you want to delete this contact?';
+  message.style.marginBottom = '1.5rem';
+  message.style.fontSize = '1.1rem';
+  
+  const buttonDiv = document.createElement('div');
+  buttonDiv.style.display = 'flex';
+  buttonDiv.style.gap = '1rem';
+  buttonDiv.style.justifyContent = 'center';
+  
+  const yesBtn = document.createElement('button');
+  yesBtn.textContent = 'Yes';
+  yesBtn.style.background = 'linear-gradient(45deg, #10309b, #93c6dd)';
+  yesBtn.style.color = '#fff';
+  yesBtn.style.border = 'none';
+  yesBtn.style.padding = '0.7rem 1.5rem';
+  yesBtn.style.borderRadius = '6px';
+  yesBtn.style.cursor = 'pointer';
+  yesBtn.onclick = () => {
     const locals = getLocalContacts();
     if (locals.find(c => c.id === id)) {
       deleteLocalContact(id);
     }
     loadContacts();
-  }
+    document.body.removeChild(popup);
+  };
+  
+  const noBtn = document.createElement('button');
+  noBtn.textContent = 'No';
+  noBtn.style.background = '#fff';
+  noBtn.style.color = '#10309b';
+  noBtn.style.border = '2px solid #10309b';
+  noBtn.style.padding = '0.7rem 1.5rem';
+  noBtn.style.borderRadius = '6px';
+  noBtn.style.cursor = 'pointer';
+  noBtn.onclick = () => document.body.removeChild(popup);
+  
+  buttonDiv.appendChild(yesBtn);
+  buttonDiv.appendChild(noBtn);
+  dialog.appendChild(message);
+  dialog.appendChild(buttonDiv);
+  popup.appendChild(dialog);
+  document.body.appendChild(popup);
+}
+
+// Handle feedback form submission
+function handleFeedback(e) {
+  e.preventDefault();
+  const feedbackForm = document.getElementById("feedbackForm");
+  alert("Thank you for your feedback!");
+  feedbackForm.reset();
 }
 
 // Edit contact
