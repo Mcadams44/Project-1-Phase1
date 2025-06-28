@@ -100,7 +100,7 @@ form {
 }
 
 #landing {
-  background: linear-gradient(90deg, #42498a 0%, #131827 100%);
+  background: linear-gradient(90deg, #3896b3 0%, #155458 100%);
   color: #ffffff;
   text-align: center;
 }
@@ -119,11 +119,11 @@ form {
 }
 
 #contacts {
-  background: linear-gradient(90deg, #ffe0b2 0%, #ffcc80 100%);
+  background: linear-gradient(90deg, #3896b3 0%, #155458 100%);
 }
 
 #contacts h2 {
-  color: #ff5722;
+  color: #93c6dd ;
 }
 
 form input, form select {
@@ -139,6 +139,7 @@ form input:focus, form select:focus {
   border-color: #10309b;
   outline: none;
   box-shadow: 0 0 0 3px rgba(16, 48, 155, 0.1);
+  transform: translateY(-2px);
 }
 
 form button {
