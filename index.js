@@ -49,7 +49,6 @@ function loadContacts() {
       displayContacts([...apiContacts, ...localContacts]);
     })
     .catch(() => {
-      // If API fails, just show local contacts
       const localContacts = getLocalContacts();
       displayContacts(localContacts);
     });
