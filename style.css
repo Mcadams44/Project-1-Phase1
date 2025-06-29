@@ -20,20 +20,15 @@ body {
 .navbar h1 {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 2.5rem;
+  font-size: 3rem;
   letter-spacing: 2px;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: bold;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-  font-family: 'Impact', 'Arial Black', sans-serif;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-align: center;
-  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 .cellphone-icon {
@@ -243,13 +238,18 @@ form {
 }
 
 #contacts h2 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(45deg, #3f079b, #4ecdc4, #45b7d1, #96ceb4);
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(246, 250, 12, 0.3);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 form input, form select {
@@ -265,7 +265,6 @@ form input:focus, form select:focus {
   border-color: #10309b;
   outline: none;
   box-shadow: 0 0 0 3px rgba(16, 48, 155, 0.1);
-  transform: translateY(-2px);
 }
 
 form button {
